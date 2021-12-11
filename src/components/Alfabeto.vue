@@ -3,7 +3,6 @@
     <div class="main-alfabeto">   
       
       <draggable class="list-group" :list="list1" group="people">
-
         <Carta
           v-for="(element, index) in list1"
           class="cartas"
@@ -12,16 +11,15 @@
           :id="element.id"        
           :index="index"
           @cambio="verificar"
-        />   
-       
+        />        
       </draggable>
 
-    </div>
-
-  
+    </div>  
 
 </template>
+
 <script>
+
 import Carta from '../components/Carta'
 import draggable from "vuedraggable";
 export default {
@@ -72,17 +70,21 @@ export default {
     this.$bus.$on("newGame", this.shuffledArray(this.list1))
   },
 
+  
+    /**
+    * Summary.Llama actualizar contador
+    * Description. LLama el método actualizar contador siempre que se detecte una actualización en el componente
+    */
   updated(){
-    this.uptateCounter()
-    
+    this.uptateCounter()    
   },
 
   methods: {     
  
-   /**
-    * Desordena el arreglo de las letas
+    /**
+    * Summary.Desordena el arreglo
+    * Description.Desordena el arreglo en una posición random para que nunca se tenga el mismo juego
     */
-
     shuffledArray(array){
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -92,7 +94,11 @@ export default {
       }  
       this.list1 = array; 
     },
-
+ 
+    /**
+    * Summary.Actualiza el contador
+    * Description.Actualiza el contador que lleva el número de movimientos que ha hecho el jugador hasta llegar al final
+    */
     uptateCounter(){
       const card = document.querySelectorAll('.cartas')
       let counter = 0
@@ -117,7 +123,7 @@ export default {
 <style scoped>
 .list-group {
   display: flex;
-  
+  padding: 8px;
   justify-content: center;
   gap: 32px;
   flex-wrap: wrap;

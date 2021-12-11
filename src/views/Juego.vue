@@ -19,8 +19,7 @@
     <div class="main-game-container">
       <div class="alphabet-game">
         <Alfabeto
-          @gano="gano"
-          :intentos="intentos"
+          @gano="gano"          
         />
       </div>
     </div>
@@ -74,24 +73,22 @@ export default {
   components:{
     Alfabeto,
   },
-
+  /**
+   * Parametros que se reciben del componente padre
+   */
   props:{
     name:{
       required: true
     },
-    intentos:{
-      required:true
-    },
+  
     imagen:{
       required:true
     }
   },
 
   data(){
-    return{
-      // movimientos: 0,
+    return{      
       mostrarMensaje: false,
-
     }
   },
   computed:{
@@ -103,15 +100,33 @@ export default {
   },
 
   methods:{
+    
+        /**
+     * Summary. Método para volver al componente home
+     * Description.Recibe el evento click asociado al botón y carga la ruta del Home
+     */
     volverInicio(){
       this.$router.push({ name: 'Home'})
     },
+
+    /**
+    * Summary. Método para incrementar los movimientos
+    * Description.Dispara un
+    */
     incrementarIntento(){
       this.$store.dispatch("incrementar")
     },
+        /**
+    * Summary. Método para mostrar el mensaje al acabar el juego
+    * Description.Setea la propiedad mostrarMensaje en true para mostrar el mensaje una vez acabado los movimientos
+    */
     gano(){
       this.mostrarMensaje = true;
     },
+          /**
+    * Summary. Método para empezar a jugar de nuevo
+    * Description.Resetea los contadores y redirije a la ruta Home
+    */
     nuevoIntento(){
       this.$store.dispatch("reset")
       this.mostrarMensaje = false;
@@ -127,7 +142,7 @@ export default {
 .game-container{
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: var(--main-blue);
   padding: 32px;
   overflow: hidden;
@@ -162,7 +177,7 @@ export default {
 }
 .main-game{
   width: 100%;
-  height: 100%;
+  height:auto;
   display: flex;
   justify-content: center;
   margin-top: 64px;  
@@ -170,7 +185,7 @@ export default {
 
 .main-game-container{
   width: 90%;
-  height: 75%;
+  
   background-color: var(--main-yellow);
   border-radius: 16px;
   display: flex;

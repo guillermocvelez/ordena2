@@ -1,4 +1,5 @@
 <template>
+  <!-- Interface gráfica de la clase jugador -->
   <div 
     class="player-container"
     @click="cargarJuego()"
@@ -20,7 +21,9 @@
 <script>
 export default {
   name: 'Jugador',
-
+  /**
+   * Propiedades que recibe la clase jugador del componente padre
+   */
   props:{
     name:{
       type: String,
@@ -32,17 +35,14 @@ export default {
     }
   },
 
-  data(){
-    return{
-      intentos: 15,
-    }
-  },
-
   methods: {
+    /**
+     * Summary. Método para cargar el juego
+     * Description.Recibe el evento click asociado a la clase jugar y carga el juego enviando tres parámetros, el nombre, los intentos y la imagen
+     */
     cargarJuego(){
       this.$router.push({ name: 'Juego', params:{ 
         name: this.name, 
-        intentos: this.intentos, 
         imagen: this.imagen  
       }})
     }
@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .player-container{
-  height: 180px;
+  height: 20vh;
   min-width: 280px;  
   border-radius: 16px;
   display: grid;

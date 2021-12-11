@@ -3,7 +3,7 @@
     <div class="home-title"> <h2>Ordena2</h2> </div>
     <div class="players-container">
       <div class="left-container">
-
+        <!-- Instacias de la clase jugador -->
         <Jugador 
           name="Ana"
           :imagen="jugador01"
@@ -32,6 +32,7 @@
           name="Jose"
           :imagen="jugador06"
         />
+         <!-- Fin Instacias de la clase jugador -->
       </div>
     </div>
     <div class="footer">
@@ -52,6 +53,9 @@ export default {
   },
 
   data(){
+    /**
+     * Parámetros del las imágenes que hacen parte del avatar-clase Jugador
+     */
     return{
       jugador01:require('../assets/jugador01.svg'),
       jugador02:require('../assets/jugador02.svg'),
@@ -72,6 +76,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background:url('../assets/imagenFondoPpal.svg');
+  background-size: 40%;
   background-color: var(--main-blue); 
   background-repeat: no-repeat;
   background-position: center;
@@ -81,18 +86,20 @@ export default {
 }
 
 .home-title{
-  font-size: 78px;
+  font-size: 4rem;
   color: var(--main-yellow);
   font-weight: bolder;  
 }
 .players-container{
   display: flex;
   justify-content: space-between;
+  height: auto;
 }
 .left-container,.right-container{
   display: flex;
   flex-direction: column;
   gap: 32px;
+  height: 10%;
 }
 .footer{
   font-size: 32px;

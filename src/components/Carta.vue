@@ -28,7 +28,6 @@ export default {
   computed:{
     newIndex(){
       if(this.id == this.index){
-        console.log("igual");
         return this.index
       }
       return this.index
@@ -36,15 +35,13 @@ export default {
 
   },
 
-  updated(){
-
-  },
-
 
   methods:{
-
+    /**
+    * Summary.Verifica si la carta está en la ubicación correcta
+    * Description.Emite un evento siempre que se detecte un movimiento de carta
+    */
     contains(){
-      console.log(this.newIndex);
       this.$emit('cambio',{idx:this.newIndex,id:this.id })
     }
   }
@@ -75,4 +72,12 @@ export default {
 .green{
   border: 10px solid green;
 }
+
+@media screen and (max-width: 1080px){
+  .carta{
+     width: 75px;
+    height: 75px;
+  }
+}
+
 </style>
